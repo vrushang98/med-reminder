@@ -1,0 +1,24 @@
+<div class="form_section">
+
+
+<div class="card box" style="width: 18rem;">
+<h5 class="card-title">Reset Password</h5>
+<form action="/new_password" method="POST">
+
+    <div class="form-group">
+          <label for="exampleInputPassword">New Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword" placeholder="********" name="password" required>
+        <input type="hidden" value="{{token}}" name="token" required>
+    </div>
+     
+  
+  <div class="form-btn">
+      <button type="submit" class="btn btn-primary primary-btn">Change Password</button>
+  </div>
+  
+</form>
+
+</div>
+
+
+</div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d4c85df6d4.js" crossorigin="anonymous"></script>
+    {{!-- <script src="https://www.google.com/recaptcha/api.js?render=6Lerrq0bAAAAAMgc0jWxAzWJ5pScdwZhZ_WNJgHO" async defer></script> --}}
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lerrq0bAAAAAMgc0jWxAzWJ5pScdwZhZ_WNJgHO"></script>
+
+    
+    <title>MedReminder</title>
+</head>
+<body>
+
+<div class="header">
+            <div class="logo">
+                <a href="/"><span>MedReminder</span><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="capsules" class="svg-inline--fa fa-capsules fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M555.3 300.1L424.2 112.8C401.9 81 366.4 64 330.4 64c-22.6 0-45.5 6.7-65.5 20.7-19.7 13.8-33.7 32.8-41.5 53.8C220.5 79.2 172 32 112 32 50.1 32 0 82.1 0 144v224c0 61.9 50.1 112 112 112s112-50.1 112-112V218.9c3.3 8.6 7.3 17.1 12.8 25L368 431.2c22.2 31.8 57.7 48.8 93.8 48.8 22.7 0 45.5-6.7 65.5-20.7 51.7-36.2 64.2-107.5 28-159.2zM160 256H64V144c0-26.5 21.5-48 48-48s48 21.5 48 48v112zm194.8 44.9l-65.6-93.7c-7.7-11-10.7-24.4-8.3-37.6 2.3-13.2 9.7-24.8 20.7-32.5 8.5-6 18.5-9.1 28.8-9.1 16.5 0 31.9 8 41.3 21.5l65.6 93.7-82.5 57.7z"></path></svg></a>
+                
+            </div>
+            {{#if user}}
+            <div class="menu">
+                <ul style="">
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+                
+            </div>
+            
+            {{/if}}
+            
+</div>
+    <div class="container-fluid" style="position: absolute;">
+        
+
+
+            <div class="notification">
+            <div class="alert alert-success" onchange="display()" style="display: none;">{{messages.success}}</div>
+         
+            <div class="alert alert-danger" onclick="display()" role="alert" style="display: none;">
+                {{messages.error}}
+            </div>
+         
+    </div>         
+           
+        {{{body}}}
+    </div>
+
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="/js/script.js"></script>
+<script>
+
+    if('{{messages.error}}')
+    {
+      $(".alert-danger").fadeTo(2000, 500).slideUp(800, function(){});
+     
+    }
+
+    if('{{messages.success}}')
+    {
+        $(".alert-success").fadeTo(2000, 500).slideUp(800, function(){});
+    }
+</script>
+
+
+</html>

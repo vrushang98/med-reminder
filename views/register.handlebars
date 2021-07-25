@@ -1,0 +1,108 @@
+<div class="form_section">
+
+
+<div class="card box" style="width: 18rem;">
+<h5>Register</h5>
+<form method="POST" class="register">
+
+    <div class="form-group">
+        <label for="exampleInputName">Name</label>
+        <input type="text" class="form-control name" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Your Name" name="name" value="{{messages.name}}" required>
+    </div>
+    <div class="form-group">
+          <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Email" name="email" value="{{messages.email}}" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control password" id="exampleInputPassword1" placeholder="***********" name="password" value="{{messages.password}}" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPhone">Phone</label>
+        <input type="number" maxlength="10" class="form-control phone" id="exampleInputPhone" placeholder="Enter Your Phone" name="phone" value="{{messages.phone}}" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputAge">Age</label>
+        <input type="number" class="form-control age" id="exampleInputAge" placeholder="Enter Your Age" name="age" value="{{messages.age}}" required>
+    </div>
+  <div class="form-btn">
+      <button type="submit" class="btn btn-primary primary-btn">Register</button>
+        <a href="/login" class="inline-block font-bold text-sm ">
+              Already have account?
+            </a>
+  </div>
+  
+</form>
+
+</div>
+
+
+</div>
+
+<script>
+
+    var registerForm = document.querySelector('.register');
+    registerForm && registerForm.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    // alert('HI');
+    const name = document.querySelector('.name').value;
+    const email = document.querySelector('.email').value;
+    const password = document.querySelector('.password').value;
+    const phone = document.querySelector('.phone').value;
+    const age = document.querySelector('.age').value;
+
+
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{CLIENT_KEY}}', {action: 'Register'})
+            .then(function(token) {
+    
+                console.log({name,password,email,phone,age});
+                console.log(token);
+               fetch('/register',{
+                    method:'POST',
+                    headers:{
+                        'Accept':'application/json, plain/text',
+                        'Content-type':'application/json'
+                    },
+                    body:JSON.stringify({name,email,password,phone,age,token})
+                }).then(res => res.json())
+                .then(data=> {
+                
+
+                    if(data.type === 'password')
+                    {
+                        document.querySelector('.password').value='';
+                    }
+                    if(data.type === 'mobile')
+                    {
+                        document.querySelector('.phone').value='';
+                    }
+                    console.log(data);
+                    if(!data.success)
+                    {
+                        $(".alert-danger").html(data.error);
+                        $(".alert-danger").fadeTo(2000, 500).slideUp(800, function(){});
+                    }
+                    if(data.success)
+                    {
+                
+                        $(".alert-success").html(data.msg+', redirecting to Login Page');
+                        $(".alert-success").fadeTo(2000, 500).slideUp(800, function(){});
+                        
+                        setTimeout(function(){
+                            window.location.href='/login';
+                        },2000);
+                        
+                        
+                    
+                    }
+                
+                });
+            });
+    });
+    
+    
+    
+});
+</script>

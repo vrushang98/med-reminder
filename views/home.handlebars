@@ -1,0 +1,224 @@
+<div class="form-section small">
+
+
+
+ <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"></div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Your Medicine</h5>
+        </div>
+        <div class="modal-body">
+          <form action="/add_medicine" method="POST" class="add-med-form">
+
+            <div class="form-group">
+
+              <input type="text" class="form-control med_name" placeholder="Medicine Name" name="name" required>
+
+            </div>
+            <div class="form-group">
+              <div class="input-flex ">
+                <input type="number" class="form-control med_quantity" placeholder="Quantity" name="quantity" required>
+                <select class="form-control unit med_unit" name="unit">
+                  <option value="Piece">Piece</option>
+                  <option value="ML">ml</option>
+          
+                </select>
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="input-flex">
+                <select class="form-control freq med_freq" name="frequency">
+                  
+                  <option value="everyday" selected>Everyday</option>
+                  <option value="once">Once a week</option>
+                  <option value="custom">custom</option>
+                </select>
+                <select class="form-control onceday med_onceday" name="onceday" style="display: none;">
+                  <option selected disabled>Select Day</option>
+                  <option value="mon">Monday</option>
+                  <option value="tue">Tuesday</option>
+                  <option value="wed">Wednesday</option>
+                  <option value="thu">Thursday</option>
+                  <option value="fri">Friday</option>
+                  <option value="sat">Saturday</option>
+                  <option value="sun">Sunday</option>
+                </select>
+              </div>
+            </div>
+  
+            <div class="weekDays-selector add-weekdays" style="display: none;">
+            
+              <input type="checkbox" id="weekday-mon" class="weekday week_mon" name="week_mon" />
+              <label for="weekday-mon">MON</label>
+            
+         
+              <input type="checkbox" id="weekday-tue" class="weekday week_tue" name="week_tue"/>
+              <label for="weekday-tue">TUE</label>
+         
+              <input type="checkbox" id="weekday-wed" class="weekday week_wed" name="week_wed"/>
+              <label for="weekday-wed">WED</label>
+              <input type="checkbox" id="weekday-thu" class="weekday week_thu" name="week_thu"/>
+              <label for="weekday-thu">THU</label>
+              <input type="checkbox" id="weekday-fri" class="weekday week_fri" name="week_fri"/>
+              <label for="weekday-fri">FRI</label>
+              <input type="checkbox" id="weekday-sat" class="weekday week_sat" name="week_sat"/>
+              <label for="weekday-sat">SAT</label>
+              <input type="checkbox" id="weekday-sun" class="weekday week_sun" name="week_sun"/>
+              <label for="weekday-sun">SUN</label>
+            </div>
+
+
+            <div class="form-group">
+              <div class="input-flex">
+                <div class="form-check">
+                  <input class="form-check-input morning" type="checkbox" id="inlineCheckbox1" value="true" name="morning" unchecked>
+                  <label class="form-check-label" for="inlineCheckbox1">Morning</label>
+                </div>
+                <input type="time" class="form-control morning-select morningtime" style="display: none;" name="morningtime" value="08:00" min="05:00" max="11:59" pattern="[0-9]{2}:[0-9]{2}">
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="input-flex">
+                <div class="form-check">
+                  <input class="form-check-input noon" type="checkbox" id="inlineCheckbox2" value="true" name="noon">
+                  <label class="form-check-label" for="inlineCheckbox2">Noon</label>
+                </div>
+                <input type="time" class="form-control noon-select noontime" style="display: none;" name="noontime" value="12:00" min="12:00" max="04:59">
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="input-flex">
+                <div class="form-check">
+                  <input class="form-check-input evening" type="checkbox" id="inlineCheckbox3" value="true" name="evening">
+                  <label class="form-check-label" for="inlineCheckbox3">Evening</label>
+                </div>
+                <input type="time" class="form-control evening-select eveningtime" style="display: none;" name="eveningtime" value="17:00" min="17:00" max="20:59">
+              </div>
+
+            </div>
+            <div class="form-group">
+              <div class="input-flex">
+                <div class="form-check">
+                  <input class="form-check-input night" type="checkbox" id="inlineCheckbox4" value="true" name="night">
+                  <label class="form-check-label" for="inlineCheckbox4">Night</label>
+                </div>
+                <input type="time" class="form-control night-select nighttime" style="display: none;" name="nighttime" value="20:30" min="20:30" max="23:59">
+              </div>
+
+            </div>
+            
+            <div class="custom-control custom-switch form-group">
+             
+                <input type="checkbox" class="custom-control-input notify-switch notification_switch" id="customSwitches" name="notification" checked>
+              <label class="custom-control-label" for="customSwitches" style="font-size: 14px;">Notifications <span class="indicator">On</span> </label>
+             
+            </div>
+            <div class="modal-footer">
+
+              <button type="Submit" class="btn btn-primary secondary-btn">Save changes</button>
+              <button type="button" class="btn btn-primary primary-btn" data-bs-dismiss="modal">X</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="search-bar" style="margin-top:10px;width:100%;">
+ 
+    <div class="input-group search-flex">
+     
+      <select class="form-control rounded search-options" name="options">
+                  <option value="name">Name</option>
+                  <option value="frequency">Frequency</option>
+                  
+      </select>
+      <input type="search" class="form-control rounded search-input" placeholder="Search" aria-label="Search"
+        aria-describedby="search-addon" name="search"/>
+      <button class="input-group-text border-0 search-button" id="search-addon">
+        <i class="fas fa-search"></i>
+      </button>
+      
+    
+    </div>
+    
+  </div>
+  <div class="card-grps">
+
+{{#if data}}
+    {{#each data}}
+
+
+    <div class="card med-card" style="width: 18rem;">
+
+
+      <div class="card-body">
+        <div class="card-title">
+          <h5 style="color:#009432;font-weight: 900;text-transform:uppercase;">{{this.name}}</h5>
+          <div >
+           
+          <a href="/edit_medicine/{{this._id}}"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="edit" class="svg-inline--fa fa-edit fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"></path></svg></a>
+        </div>
+        </div>
+        <hr>
+
+
+        <div class="card-flex">
+
+          <div class="med-flex">
+            <div class="med-unit1" style="color:#EA2027">Unit</div>
+            <div>{{this.unit}}</div>
+          </div>
+          <div class="med-flex">
+            <div class="med-unit2" style="color:#006266">Frequency</div>
+            <div>{{this.frequency}}</div>
+          </div>
+        </div>
+        <hr>
+        <div class="card-flex-time">
+          <div class="med-flex">
+            <div class="med-unit" style="color:#009432;">Time</div>
+            <div class="med-flex-time">
+              {{data.time}}
+              {{#each this.time}}
+              <div class="med-flex">
+                <div>{{this.time}}</div>
+                <div>{{this.format}}</div>
+              </div>
+              {{/each}}
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    {{/each}}
+      {{else}}
+  <h3>Add your medicines</h3>
+  
+{{/if}}
+  </div>
+
+
+
+
+  <div class="bottom-button">
+    
+    <button data-bs-toggle="modal" class="secondary-btn flt-right" data-bs-target="#exampleModal">+</button>
+  </div>
+</div>
+
