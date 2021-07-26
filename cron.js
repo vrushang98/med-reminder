@@ -15,8 +15,8 @@ var options = {
     transport: {
         service: 'Gmail',
         auth: {
-            user: process.env.EMAIL.toString(),
-            pass: process.env.EMAIL_PASSWORD.toString()
+            user: process.env.EMAIL,
+            pass: process.env.EMAIL_PASSWORD
     }
     },
     verbose: true
@@ -80,7 +80,7 @@ console.log("To:"+to);
 if(to!='')
 {
     var mailOptions = {
-        from: process.env.EMAIL.toString(),
+        from: process.env.EMAIL,
         to,
         subject: 'Medicine Reminder',
         html: ''
