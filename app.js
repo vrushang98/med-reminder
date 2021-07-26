@@ -79,7 +79,7 @@ require('./routes/routes')(app);
 //Cron
 
 
- console.log('Started');
+ 
 
 
 

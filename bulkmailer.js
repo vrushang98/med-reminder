@@ -24,20 +24,17 @@ BulkMailer.prototype.send = function (info, single, callback) {
         receivers = [info.to];
     }
 
-    console.log(receivers);
+
 
     var tasks = [];
     async.each(receivers, function (user, eachCB) {
         tasks.push(function (callback) {
             var usr = user.split("#");
-            console.log(usr);
             info.to = usr[0];
             info.html = usr[1];
-            console.log(info);
             that.nodemailer.sendMail(info, callback);
         });
         eachCB();
-        console.log(tasks);
     }, function (error) {
         if (!error) {
             async.parallel(tasks, function (error, results) {

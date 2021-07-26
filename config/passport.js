@@ -12,8 +12,6 @@ function init(passport)
 
 
         const user = await User.findOne({email:email});
-        console.log("from passport:",user);
-        console.log(email,':',password);
         if(!user)
         {
             return done(null,false,{message:'No user exist with this email'});
@@ -21,8 +19,6 @@ function init(passport)
         
 
         bcrypt.compare(password,user.password).then(match => {
-            console.log('Password:',password);
-            console.log('USer:',user.password);
             if(match)
             {
                 return done(null,user,{message:'Logged in Successfully'});

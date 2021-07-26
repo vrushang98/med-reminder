@@ -15,7 +15,7 @@ function convertTime24to12(time) {
     if(time[0].toString().length == 1){
         time[0]= '0' +time[0];
     } 
-    console.log(time[0].toString().length);
+ 
     return time.join(''); // return adjusted time or original string
   }
 
@@ -62,7 +62,7 @@ function processSingleMedicine(medicine)
     medicine.weekdays.forEach( el => med[el]=true);
      
     
-    console.log(med);
+    
     return med;
 }
 function processMedicine(meds)
@@ -121,11 +121,11 @@ function medController()
             if(options!=null || options!=undefined || options!='' || search!=undefined || search!=null || search!="")
             {
                 search=search.toLowerCase();
-                console.log(search);
+              
                 let userPattern = new RegExp("^"+req.body.search.toLowerCase());
 
                 if(options==='name'){
-                    console.log(req.user._id);
+                
                     meds = await Medicine.find({
                         $and:[
                             {userid:req.user._id},
@@ -153,9 +153,9 @@ function medController()
         async addMedicine(req,res)
         {
 
-            console.log('Received');
+        
             const {name,quantity,unit,other_unit,frequency,onceday,morning,evening,noon,night,morningtime,noontime,eveningtime,nighttime,notification,week_mon,week_tue,week_wed,week_thu,week_fri,week_sat,week_sun} = req.body;
-            console.log(req.body);
+         
             if(!name || !quantity)
             {
                 req.flash('error','All fields are required');
@@ -172,19 +172,8 @@ function medController()
             }
 
 
-            // const captchaVerification = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=6LeCjaAbAAAAAAI26paZm00qXQlUgGxkfsWsgKra&response=${req.body.captcha}`,
-            // {
-            //     method:'POST'
-            // }).then(response => response.json())
-            // // .then(google_response => res.json({ google_response }))
-            // // .catch(error => res.json({ error }));
-
-            // console.log(captchaVerification);
-            
-            // if(captchaVerification.success === true)
-            // {
-            // }
-                console.log('Inside');
+           
+             
                 const medSchema = new Medicine({
                     name:name.toLowerCase(),
                     quantity,
@@ -235,7 +224,7 @@ function medController()
         async updateMedicine(req,res)
         {
             const {name,quantity,unit,frequency,onceday,morning,evening,noon,night,morningtime,noontime,eveningtime,nighttime,notification,week_mon,week_tue,week_wed,week_thu,week_fri,week_sat,week_sun} = req.body;
-            console.log(req.body);
+         
 
             let med = await Medicine.findById({_id:req.body.med_id});
 
@@ -259,7 +248,7 @@ function medController()
                 med.weekdays=[];
           
 
-                console.log("Updated:",med);
+
 
                 if(frequency==='custom' && week_mon)    med.weekdays.push("mon");
 
@@ -349,13 +338,6 @@ function medController()
             let med = await Medicine.findById({_id:res.app.get('med')}).lean();
        
             res.render('editMedicine');
-        },
-        async cronTest(req,res,next)
-        {
-            let med = await Medicine.find({notification:true}).lean();
-            console.log(med);
-            next();
-
         }
     }
 }

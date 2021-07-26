@@ -70,7 +70,6 @@ app.use((req,res,next) => {
     helpers:{
       ifequal:function(a, b,options) {
         if (a == b) {
-          console.log('checked');
           return options.fn(this);
         } else {
           return options.inverse(this);
@@ -105,5 +104,5 @@ app.use((req,res) => {
 
 app.listen(PORT, () => {
 
-    console.log('Server running on 3000');
+    console.log(`Server running on ${PORT}`);
 })

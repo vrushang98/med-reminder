@@ -30,7 +30,6 @@ var notifySwitch = document.querySelector('.notify-switch');
 var addWeekdays = document.querySelector('.add-weekdays');
 var editWeekdays = document.querySelector('.edit-weekdays');
 function showNotification(){
-    console.log("Hello");
    alert("hi");
 }; 
 
@@ -262,7 +261,6 @@ window.onload = function()
     }
     if(document.querySelector('.edit-med-form'))
     {   
-        console.log('Reset');
         document.querySelector('.edit-med-form').reset();
     }
 

@@ -74,7 +74,7 @@ var task2 = cron.schedule('* * * * *', async () => {
             // console.log(batch);
         }
     });
-console.log("To:"+to);
+
 
 
 if(to!='')
