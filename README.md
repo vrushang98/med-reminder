@@ -6,13 +6,15 @@
 1. Frontend: HTML, CSS, JavaScript, Bootstrap CSS
 2. Backend: Node.js, Express.js, Handlebars (view-engine)
 3. Database: MongoDB
-4. Used noty for notifications
+4. Used Cron Jobs for notifications
 
-# Login Screen
-![](/images/login.jpg)
 
-# Registeration Screen
-![](/images/register.jpg)
 
-# Home Screen
+### Login Screen
+![](/images/Login.jpg)
+
+### Registeration Screen
+![](/images/Register.jpg)
+
+### Home Screen
 ![](/images/Home.jpg)
