@@ -10,11 +10,17 @@
 
 
 
-### Login Screen
+### Login:
 ![](/images/Login.jpg)
 
-### Registeration Screen
+### Registeration:
 ![](/images/Register.jpg)
 
-### Home Screen
+### Home:
+![](/images/Home.jpg)
+
+### Add Medicine:
+![](/images/Add.jpg)
+
+### Edit Medicine:
 ![](/images/Home.jpg)
