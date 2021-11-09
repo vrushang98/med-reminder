@@ -295,7 +295,7 @@ function authController()
                             subject:"password reset",
                             html:`
                                 <p>You requested for password reset</p>
-                                <h5>Click on this link <a href="http://65.0.127.254/reset/${token}">Link</a> to reset password</h5>
+                                <h5>Click on this link <a href="${process.env.SITE_URL}/reset/${token}">Link</a> to reset password</h5>
                             `
                         },function(err,info)
                         {
