@@ -106,10 +106,8 @@ function authController()
 
                     const captchaVerification = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SERVER_KEY}&response=${req.body.token}`,
                     {
-                        method:'POST'
+                        method:'POST',
                     }).then(response => {
-                        console.log("in then response:",response);    
-                        console.log("captcha verification:",captchaVerification);
                         response.json();
                     })
                     
