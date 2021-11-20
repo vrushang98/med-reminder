@@ -1,8 +1,15 @@
 
 const User = require('../models/user');
+const rateLimiter = require('express-rate-limit');
 const authController = require('../controllers/authController');
 const medController = require('../controllers/medController');
 const {isAuthenticated,isAuthenticated2,nocache} = require('../middleware/auth');
+
+
+const apiLimit = rateLimiter({
+    windowMs:15*60*1000,
+    max:5
+});
 
 
 
@@ -15,7 +22,7 @@ function initRoutes(app){
     app.post('/login',nocache,isAuthenticated2,authController().postLogin);
 
     app.get('/register',nocache,isAuthenticated2,authController().register);
-    app.post('/register',nocache,isAuthenticated2,authController().postRegister);
+    app.post('/register',nocache,apiLimit,isAuthenticated2,authController().postRegister);
     //Forgot Password
     app.get('/forgot_password',nocache,isAuthenticated2,authController().forgotPWD);
 
