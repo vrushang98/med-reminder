@@ -79,7 +79,7 @@ function authController()
         {
        
             const {email,password,name,phone,age} = req.body;
-            console.log("Token from:",token);
+            
 
             if(!name || !email || !password || !phone || !age)
             {
