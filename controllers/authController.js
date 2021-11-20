@@ -78,7 +78,7 @@ function authController()
         async postRegister(req,res,next)
         {
        
-            const {email,password,name,phone,age,token} = req.body;
+            const {email,password,name,phone,age} = req.body;
             console.log("Token from:",token);
 
             if(!name || !email || !password || !phone || !age)
@@ -104,15 +104,7 @@ function authController()
                 {
 
 
-                    const captchaVerification = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SERVER_KEY}&response=${req.body.token}`,
-                    {
-                        method:'POST',
-                    }).then(response => {
-                        response.json();
-                    })
                     
-                    if(captchaVerification.success === true)
-                    {
                         User.exists({email:email.toLowerCase()},(err,result)=>{
                             if(result)
                             {
@@ -139,11 +131,7 @@ function authController()
                             
                             return res.status(200).json({'success':false,'type':'taken',error:'Something went wrong'});
                         });
-                    }
-                    else
-                    {
-                        return res.status(200).json({'success':false,'type':'taken',error:'Invalid Captcha'});
-                    }
+                    
                    
                 }
             }

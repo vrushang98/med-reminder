@@ -53,19 +53,13 @@
     const age = document.querySelector('.age').value;
 
 
-    grecaptcha.ready(function() {
-        grecaptcha.execute('{{CLIENT_KEY}}', {action: 'Register'})
-            .then(function(token) {
-    
-                console.log({name,password,email,phone,age});
-                console.log(token);
                fetch('/register',{
                     method:'POST',
                     headers:{
                         'Accept':'application/json, plain/text',
                         'Content-type':'application/json'
                     },
-                    body:JSON.stringify({name,email,password,phone,age,token})
+                    body:JSON.stringify({name,email,password,phone,age})
                 }).then(res => res.json())
                 .then(data=> {
                 
@@ -99,8 +93,7 @@
                     }
                 
                 });
-            });
-    });
+       
     
     
     
